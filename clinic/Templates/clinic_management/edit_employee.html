@@ -1,0 +1,33 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Edit Employee</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="employee_name" class="form-label">Name</label>
+        <input type="text" id="employee_name" name="employee_name" class="form-control" value="{{ employee.employee_name }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="employee_phone_number" class="form-label">Phone</label>
+        <input type="text" id="employee_phone_number" name="employee_phone_number" class="form-control" value="{{ employee.employee_phone_number }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="employee_address" class="form-label">Address</label>
+        <textarea id="employee_address" name="employee_address" class="form-control" required>{{ employee.employee_address }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="job_title" class="form-label">Job Title</label>
+        <input type="text" id="job_title" name="job_title" class="form-control" value="{{ employee.job_title }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="pharmacy" class="form-label">Pharmacy</label>
+        <select id="pharmacy" name="pharmacy" class="form-select" required>
+            {% for pharmacy in pharmacies %}
+            <option value="{{ pharmacy.pharmacy_id }}" {% if employee.pharmacy == pharmacy %}selected{% endif %}>{{ pharmacy.pharmacy_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Save Changes</button>
+</form>
+{% endblock %}

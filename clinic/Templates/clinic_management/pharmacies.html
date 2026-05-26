@@ -1,0 +1,22 @@
+{% extends 'clinic_management/base.html' %}
+{% block content %}
+<h2>Pharmacies</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Pharmacy Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pharmacy in pharmacies %}
+        <tr>
+            <td>{{ pharmacy.pharmacy_name }}</td>
+            <td>{{ pharmacy.address }}</td>
+            <td>{{ pharmacy.pharmacy_number}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

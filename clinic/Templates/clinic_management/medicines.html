@@ -1,0 +1,30 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Medicines List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dosage</th>
+            <th>Price</th>
+            <th>Manufacture Date</th>
+            <th>Expiry Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for medicine in medicines %}
+        <tr>
+            <td>{{ medicine.m_id }}</td>
+            <td>{{ medicine.m_name }}</td>
+            <td>{{ medicine.dosage }}</td>
+            <td>{{ medicine.price }}</td>
+            <td>{{ medicine.manufacture_date }}</td>
+            <td>{{ medicine.expiry_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/medicines/add/" class="btn btn-primary">Add New Medicine</a>
+{% endblock %}

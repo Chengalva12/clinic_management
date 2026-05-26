@@ -1,0 +1,45 @@
+{% extends 'clinic_management/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Create Prescription</h2>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor</label>
+            <input type="text" id="doctor" class="form-control" value="Dr. {{ user.doctor.D_Name }}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="patient" class="form-label">Select Patient</label>
+            <select name="patient" id="patient" class="form-select" required>
+                <option value="">Select Patient</option>
+                {% for patient in patients %}
+                <option value="{{ patient.patient_id }}">{{ patient.patient_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="medicine" class="form-label">Select Medicine</label>
+            <select name="medicine" id="medicine" class="form-select" required>
+                <option value="">Select Medicine</option>
+                {% for medicine in medicines %}
+                <option value="{{ medicine.m_id }}">{{ medicine.m_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="pharmacy" class="form-label">Select Pharmacy</label>
+            <select name="pharmacy" id="pharmacy" class="form-select" required>
+                <option value="">Select Pharmacy</option>
+                {% for pharmacy in pharmacies %}
+                <option value="{{ pharmacy.pharmacy_id }}">{{ pharmacy.pharmacy_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="dosage_instructions" class="form-label">Dosage Instructions</label>
+            <textarea name="dosage_instructions" id="dosage_instructions" class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Prescription</button>
+    </form>
+</div>
+{% endblock %}

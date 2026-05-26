@@ -1,0 +1,26 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Vaccinations List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dosage</th>
+            <th>Clinic</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vaccination in vaccinations %}
+        <tr>
+            <td>{{ vaccination.vaccination_id }}</td>
+            <td>{{ vaccination.vaccination_name }}</td>
+            <td>{{ vaccination.dosage }}</td>
+            <td>{{ vaccination.clinic.clinic_name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/vaccinations/add/" class="btn btn-primary">Add New Vaccination</a>
+{% endblock %}

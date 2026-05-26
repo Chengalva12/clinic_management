@@ -1,0 +1,35 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Patients List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.patient_id }}</td>
+            <td>{{ patient.patient_name }}</td>
+            <td>{{ patient.Age }}</td>
+            <td>{{ patient.Gender }}</td>
+            <td>{{ patient.patient_phone_number }}</td>
+            <td>{{ patient.patient_address }}</td>
+            <td>
+                <a href="/patients/edit/{{ patient.patient_id }}/" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/patients/delete/{{ patient.patient_id }}/" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/patients/add/" class="btn btn-primary">Add New Patient</a>
+{% endblock %}

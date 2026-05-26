@@ -1,0 +1,11 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h1>Assign Patient</h1>
+<p>Assign patient: {{ patient.user.username }}</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Assign</button>
+</form>
+{% endblock %}

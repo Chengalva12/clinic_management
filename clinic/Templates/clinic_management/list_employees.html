@@ -1,0 +1,35 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Employees</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Job Title</th>
+            <th>Pharmacy</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ employee.employee_name }}</td>
+            <td>{{ employee.employee_phone_number }}</td>
+            <td>{{ employee.employee_address }}</td>
+            <td>{{ employee.job_title }}</td>
+            <td>{{ employee.pharmacy.pharmacy_name }}</td>
+            <td>
+                <a href="{% url 'edit_employee' employee.employee_id %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'delete_employee' employee.employee_id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'add_employee' %}" class="btn btn-primary">Add Employee</a>
+{% endblock %}

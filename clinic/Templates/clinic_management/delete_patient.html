@@ -1,0 +1,11 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Delete Patient</h2>
+<p>Are you sure you want to delete the patient <strong>{{ patient.patient_name }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/patients/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

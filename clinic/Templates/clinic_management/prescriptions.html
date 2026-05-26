@@ -1,0 +1,27 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Prescription List</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Prescription ID</th>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Medicine</th>
+            <th>Pharmacy</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for prescription in prescriptions %}
+        <tr>
+            <td>{{ prescription.Prescription_id }}</td>
+            <td>{{ prescription.patient.patient_name }}</td>
+            <td>{{ prescription.doctor.D_Name }}</td>
+            <td>{{ prescription.medicine.m_name }}</td>
+            <td>{{ prescription.pharmacy.pharmacy_name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'clinic_management/base.html' %}
+
+{% block content %}
+<h2>Add a New Doctor</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="specialization" class="form-label">Specialization</label>
+        <input type="text" class="form-control" id="specialization" name="specialization" required>
+    </div>
+    <div class="mb-3">
+        <label for="clinic" class="form-label">Clinic</label>
+        <select class="form-select" id="clinic" name="clinic" required>
+            <option value="">Select a Clinic</option>
+            {% for clinic in clinics %}
+            <option value="{{ clinic.clinic_id }}">{{ clinic.clinic_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add Doctor</button>
+    <a href="/doctors/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
